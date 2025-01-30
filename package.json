@@ -1,0 +1,29 @@
+{
+  "name": "node_package",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --port 3000",
+    "build_linux": "NODE_ENV=production webpack",
+    "build_window": "set NODE_ENV=production && webpack"
+  },
+  "author": "Anjali Sachan",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "css-loader": "^7.1.2",
+    "esbuild-loader": "^4.2.2",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
