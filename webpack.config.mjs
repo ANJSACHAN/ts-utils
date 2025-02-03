@@ -6,7 +6,7 @@ const prod = process.env.NODE_ENV === 'production'
 export default {
   mode: prod ? 'production' : 'development',
   devtool: prod ? undefined : 'source-map',
-  entry: './src/index.tsx',
+  entry: './index.tsx',
   module: {
     rules: [
       {
@@ -23,7 +23,11 @@ export default {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+        ],
       },
     ]
   },
