@@ -92,10 +92,3 @@ export interface ToggleProps {
   sliderClassName?: string;
   sliderStyle?: React.CSSProperties;
 }
-
-export enum FieldType {
-  TEXT = 'text',
-  PASSWORD = 'password',
-  EMAIL = 'email',
-  NUMBER = 'number',
-}

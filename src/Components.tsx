@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, ButtonProps, SelectProps, MultiSelectProps, DateTimeProps, ToggleProps , FieldType } from './type';
+import { TextField, ButtonProps, SelectProps, MultiSelectProps, DateTimeProps, ToggleProps ,  } from './type';
 
 
   
@@ -19,7 +19,7 @@ import { TextField, ButtonProps, SelectProps, MultiSelectProps, DateTimeProps, T
 const TextInput: React.FC<TextField> = ({
   name,
   label,
-  type = FieldType.TEXT,
+  type = "text",
   value,
   required = false,
   style,
@@ -87,7 +87,6 @@ const Select: React.FC<SelectProps> = ({
   console.log(className , buttonClassName)
     return (
         <div className={`relative w-64 ${className}`} style={style}>
-        {/* Dropdown Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`w-full text-left px-4 py-2 border rounded bg-white flex justify-between items-center ${buttonClassName}`}
@@ -96,8 +95,6 @@ const Select: React.FC<SelectProps> = ({
           {value ? options.find((opt) => opt.value === value)?.label : placeholder}
           <span className="ml-2">{isOpen ? "▲" : "▼"}</span>
         </button>
-  
-        {/* Dropdown Menu */}
         {isOpen && (
           <div
             className={`absolute w-full mt-1 bg-white border rounded shadow-lg z-10 ${dropdownClassName}`}
