@@ -1,27 +1,74 @@
-import React, { useState } from "react";
-import Alert from "./src/Alert";
+// App.tsx
+import React, { useState } from 'react';
+import { TextInput, Button, Select, MultiSelect, DateTimePicker, Toggle } from './src/Components'; // Adjust the path accordingly
+import { FieldType , Option} from './src/type'; 
 
-function App() {
-  const [showAlert, setShowAlert] = useState(false);
+const App = () => {
+  const [textValue, setTextValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
+  const [multiSelectedOptions, setMultiSelectedOptions] = useState<string[]>([]);
+  const [dateTime, setDateTime] = useState('');
+  const [isToggled, setIsToggled] = React.useState(false);
+
+  const selectOptions = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+  ];
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+  const options: Option[] = [
+    { value: "apple", label: "Apple 🍎" },
+    { value: "banana", label: "Banana 🍌" },
+    { value: "grape", label: "Grape 🍇" },
+    { value: "orange", label: "Orange 🍊" },
+  ];
 
   return (
-    <div>
-      <Alert
-        message="This is an alert!"
-        open={showAlert}
-        color="#FF5733"
-        duration={3000}
-        position="top-center"
-        onClose={() => setShowAlert(false)} 
+    <div style={{ padding: '20px' }}>
+      <h1>Component Library Test</h1>
+
+      <TextInput
+      name="text"
+      label="Text Input"
+      type="text"
+      value={textValue}
+      onChange={setTextValue}
+      placeholder="Enter text"
+    />
+
+      <Select
+        options={options}
+        value={selectedValue}
+        onChange={setSelectedValue}
+        placeholder="Choose a fruit"
+       
       />
-      <button
-        className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700"
-        onClick={() => setShowAlert(true)}
-      >
-        Show Alert
-      </button>
+
+      <MultiSelect
+        options={options}
+        selectedValues={selectedValues}
+        onChange={setSelectedValues}
+        placeholder="Choose fruits"
+       
+      />
+
+
+      <DateTimePicker
+        value={dateTime}
+        onChange={setDateTime}
+        
+      />
+
+      <Toggle
+        checked={isToggled}
+        onChange={setIsToggled}
+        
+      />
+     
     </div>
   );
-}
+};
 
 export default App;
