@@ -1,19 +1,3 @@
-export interface AlertProps {
-  message: string;
-  open: boolean;
-  onClose: () => void;
-  color: string;
-  duration?: number;
-  position?:
-    | "top-left"
-    | "top-right"
-    | "bottom-left"
-    | "bottom-right"
-    | "top-center"
-    | "bottom-center";
-}
-
-// types.ts
 export interface TextField {
   name: string;
   label?: string;
@@ -27,16 +11,19 @@ export interface TextField {
   minLength?: number;
   maxLength?: number;
   regex?: RegExp;
-className? : string
- 
+  className?: string;
+  inputClassName?: string;
+  inputStyle?: React.CSSProperties;
+  labelClassName?: string;
+  labelStyle?: React.CSSProperties;
 }
 
 export interface ButtonProps {
-  label: string;
+  label: string | React.ReactNode;
   onClick: () => void;
   disabled?: boolean;
   style?: React.CSSProperties;
-  className? : string
+  className?: string;
 }
 
 export interface Option {
@@ -45,50 +32,60 @@ export interface Option {
 }
 
 export interface SelectProps {
+  label?: string;
   options: Option[];
   value: string | null;
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  style?: React.CSSProperties;
   buttonClassName?: string;
   dropdownClassName?: string;
   optionClassName?: string;
-  style?: React.CSSProperties 
-  buttonStyle?: React.CSSProperties 
-  dropdownStyle?: React.CSSProperties 
-  optionStyle?: React.CSSProperties 
+  SelectButtonStyle?: React.CSSProperties;
+  dropdownStyle?: React.CSSProperties;
+  optionStyle?: React.CSSProperties;
+  labelClassName?: string;
+  labelStyle?: React.CSSProperties;
 }
 
 export interface MultiSelectProps {
+  label?: string;
   options: Option[];
   selectedValues: string[];
   onChange: (values: string[]) => void;
   placeholder?: string;
   className?: string;
+  style?: React.CSSProperties;
   buttonClassName?: string;
   dropdownClassName?: string;
   optionClassName?: string;
-  style?: React.CSSProperties;
-  buttonStyle?: React.CSSProperties;
+  MultiSelectButtonStyle?: React.CSSProperties;
   dropdownStyle?: React.CSSProperties;
   optionStyle?: React.CSSProperties;
+  labelClassName?: string;
+  labelStyle?: React.CSSProperties;
 }
 
 export interface DateTimeProps {
+  label?: string;
   value: string;
   onChange: (value: string) => void;
   className?: string;
   style?: React.CSSProperties;
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
+  labelClassName?: string;
+  labelStyle?: React.CSSProperties;
 }
 export interface ToggleProps {
+  label?: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
   className?: string;
   style?: React.CSSProperties;
   toggleClassName?: string;
   toggleStyle?: React.CSSProperties;
-  sliderClassName?: string;
-  sliderStyle?: React.CSSProperties;
+  labelClassName?: string;
+  labelStyle?: React.CSSProperties;
 }

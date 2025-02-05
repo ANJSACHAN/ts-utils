@@ -7,48 +7,65 @@ import {
   MultiSelect,
   DateTimePicker,
   Toggle,
-} from "./src/Components";
-import { Option } from "./src/type";
-import FilterComponent from "./src/filterComponent";
+} from "./src/Component";
+import { Option } from "./src/types/Component";
+import FilterComponent from "./src/FilterComponent";
+import Alert from "./src/Alert";
 
 const App = () => {
   const filterSchema = [
     {
-      name: "search",
-      label: "Search",
+      name: "text",
+      label: "Text Input",
       type: "text",
-      placeholder: "Search...",
-      className: "bg-red-200",
+      placeholder: "Search Text...",
+      
     },
     {
-      name: "search2",
-      label: "Search2",
-      type: "password",
-      placeholder: "Search...",
-      className: "bg-blue-200",
-    },
-    {
-      name: "search3",
-      label: "Search3",
+      name: "number",
+      label: "Number Input",
       type: "number",
-      placeholder: "Search...",
+      placeholder: "Search Number...",
+     
     },
     {
-      name: "status",
-      label: "Status",
+      name: "toggle",
+      label: "Toggle Button",
+      type: "toggle",
+      labelClassName : "mb-2" 
+    },
+    {
+      name: "single-select",
+      label: "Single Select",
       type: "select",
       options: [
         { value: "active", label: "Active" },
         { value: "inactive", label: "Inactive" },
       ],
     },
+
     {
-      name: "categories",
-      label: "Categories",
+      name: "multi-select",
+      label: "Multiple Select",
       type: "multi-select",
       options: [
-        { value: "cat1", label: "Category 1" },
-        { value: "cat2", label: "Category 2" },
+      
+          { value: "electronics", label: "Electronics & Gadgets" },
+          { value: "fashion", label: "Clothing & Fashion" },
+          { value: "home_appliances", label: "Home Appliances" },
+          { value: "books", label: "Books & Literature" },
+          { value: "fitness", label: "Fitness & Wellness" },
+          { value: "gaming", label: "Gaming & Consoles" },
+          { value: "beauty", label: "Beauty & Personal Care" },
+          { value: "automobile", label: "Automobiles & Accessories" },
+          { value: "food", label: "Food & Beverages" },
+          { value: "toys", label: "Toys & Kids' Products" },
+          { value: "music", label: "Music & Instruments" },
+          { value: "pet_supplies", label: "Pet Supplies" },
+          { value: "gardening", label: "Gardening & Outdoors" },
+          { value: "furniture", label: "Furniture & Decor" },
+         
+        
       ],
     },
     {
@@ -58,12 +75,23 @@ const App = () => {
       name1: "startDate",
       name2: "endDate",
     },
+    {
+      name: "date",
+      label: "Date Time",
+      type: "datetime",
+    },
+
+
+
   ];
 
   const [filters, setFilters] = useState({});
 
   const handleApply = () => {
     console.log(filters);
+    setAlert(true);
+    setAlertMsg("Filters are applied");
+    setAlertColor("green")
   };
 
   const handleReset = () => {
@@ -82,19 +110,24 @@ const App = () => {
     { value: "orange", label: "Orange 🍊" },
   ];
 
+  const[alert , setAlert] = useState(false);
+  const[alertMsg , setAlertMsg] = useState("");
+  const[alertColor, setAlertColor] = useState("")
   return (
     <div style={{ padding: "20px", height: "100vh" }} className="bg-red-200">
       <h1>Component Library Test</h1>
       <TextInput
         name="text"
         label="Text Input"
-        type="text"
+        type="number"
         value={textValue}
         onChange={setTextValue}
         placeholder="Enter text"
+        
       />
 
       <Select
+      label ="choose"
         options={options}
         value={selectedValue}
         onChange={setSelectedValue}
@@ -102,23 +135,33 @@ const App = () => {
       />
 
       <MultiSelect
+       label ="choose"
         options={options}
         selectedValues={selectedValues}
         onChange={setSelectedValues}
         placeholder="Choose fruits"
       />
 
-      <DateTimePicker value={dateTime} onChange={setDateTime} />
+      <DateTimePicker  label ="choose" value={dateTime} onChange={setDateTime} />
 
-      <Toggle checked={isToggled} onChange={setIsToggled} />
+      <Toggle  label ="choose" checked={isToggled} onChange={setIsToggled} />
 
       <FilterComponent
-        filterSchema={filterSchema}
-        filters={filters}
-        setFilters={setFilters}
-        handleApply={handleApply}
-        handleResetFilters={handleReset}
-      />
+      filterSchema={filterSchema}
+      filters={filters}
+      setFilters={setFilters}
+      handleApply={() => handleApply()}
+      handleResetFilters={() => setFilters({})}
+    />
+
+    <Alert
+    open = {alert}
+    onClose = {() => setAlert(false)}
+    message = {alertMsg}
+    color = {alertColor}
+iconColor ="red"
+
+    />
     </div>
   );
 };

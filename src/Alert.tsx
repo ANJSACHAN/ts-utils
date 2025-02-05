@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AlertProps } from "./type";
+import { AlertProps } from "./types/Alert";
 
 const Alert: React.FC<AlertProps> = ({
   message,
@@ -8,6 +8,8 @@ const Alert: React.FC<AlertProps> = ({
   duration = 5000,
   position = "top-center",
   onClose,
+  textColor="white",
+  iconColor="red"
 }) => {
   const [visible, setVisible] = useState(open);
 
@@ -35,11 +37,12 @@ const Alert: React.FC<AlertProps> = ({
 
   return (
     <div
-      style={{ backgroundColor: color }}
+    style={{ backgroundColor: color, color: textColor }}
+
       className={`fixed ${positionClasses[position]} p-4 text-white rounded shadow-lg z-50`}
     >
       {message}
-      <button className="ml-4 text-sm" onClick={() => setVisible(false)}>✖</button>
+      <button style={{color : iconColor}} className="ml-4  font-bold" onClick={() => setVisible(false)}>x</button>
     </div>
   );
 };
