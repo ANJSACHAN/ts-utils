@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AlertProps } from "./types/Alert";
 
-const Alert: React.FC<AlertProps> = ({
+export const Alert: React.FC<AlertProps> = ({
   message,
   open,
   color,
@@ -47,4 +47,3 @@ const Alert: React.FC<AlertProps> = ({
   );
 };
 
-export default Alert;

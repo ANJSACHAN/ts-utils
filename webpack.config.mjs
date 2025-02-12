@@ -1,46 +1,52 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-
-const prod = process.env.NODE_ENV === 'production'
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default {
-  mode: prod ? 'production' : 'development',
-  devtool: prod ? undefined : 'source-map',
-  entry: './index.tsx',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  entry: './src/index.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    library: {
+      type: 'module'
+    },
+    clean: true
+  },
+  experiments: {
+    outputModule: true,
+  },
+  externals: [
+    {
+      react: 'react',
+      'react-dom': 'react-dom',
+      'react/jsx-runtime': 'react/jsx-runtime'
+    }
+  ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      'react/jsx-runtime': path.resolve(__dirname, './node_modules/react/jsx-runtime')
+    }
+  },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'esbuild-loader',
-        options: {
-          target: 'esnext',
-          jsx: 'automatic',
-        },
-        resolve: {
-          extensions: ['.ts', '.tsx', '.js', '.json'],
-        },
+        use: {
+          loader: 'esbuild-loader',
+          options: {
+            target: 'es2015',
+            jsx: 'automatic'
+          }
+        }
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-        ],
-      },
+        use: ['style-loader', 'css-loader', 'postcss-loader']
+      }
     ]
-  },
-  output: {
-    filename: '[name].[contenthash].js',
-    path: import.meta.dirname + '/dist/',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
-  ],
-}
+  }
+};

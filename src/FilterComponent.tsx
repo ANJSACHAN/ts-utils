@@ -10,7 +10,7 @@ import {
 
 import { FilterComponentProps, FilterSchema } from "./types/Filter";
 
-const FilterComponent: React.FC<FilterComponentProps> = ({
+export const FilterComponent: React.FC<FilterComponentProps> = ({
   filterSchema,
   filters,
   setFilters,
@@ -310,4 +310,4 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   );
 };
 
-export default FilterComponent;
+
