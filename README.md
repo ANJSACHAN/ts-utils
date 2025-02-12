@@ -1,97 +1,261 @@
-Here’s your **README.md** file for `ui-widgets-kit`:  
-
-```md
 # UI Widgets Kit
 
 **UI Widgets Kit** is a collection of reusable, customizable React UI components designed for modern web applications.
 
 ## 🚀 Installation
-
-Install via npm:
-
 ```sh
-npm install ui-widgets-kit
+npm install your-package-name
 ```
 
-Or with yarn:
+or
 
 ```sh
-yarn add ui-widgets-kit
+yarn add your-package-name
 ```
 
 ---
 
-## 📌 Usage
+## Components
+### 1️⃣ Alert Component
+Displays an alert message with customizable colors, duration, and position.
 
-Import and use components in your React project:
+#### Props:
+```ts
+interface AlertProps {
+    message: string;
+    open: boolean;
+    onClose: () => void;
+    color: string;
+    duration?: number;
+    textColor?: string;
+    iconColor?: string;
+    position?: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "top-center" | "bottom-center";
+}
+```
 
-```tsx
-import { Button, TextInput } from "ui-widgets-kit";
+---
 
-function App() {
-  return (
-    <div>
-      <Button label="Click Me" onClick={() => alert("Button Clicked!")} />
-      <TextInput placeholder="Enter text here..." />
-    </div>
-  );
+### 2️⃣ TextField Component
+A customizable text input field with validation options.
+
+#### Props:
+```ts
+interface TextField {
+    name: string;
+    label?: string;
+    type?: string;
+    value: string;
+    required?: boolean;
+    style?: React.CSSProperties;
+    placeholder?: string;
+    error?: string;
+    onChange: (value: string) => void;
+    minLength?: number;
+    maxLength?: number;
+    regex?: RegExp;
+    className?: string;
+    inputClassName?: string;
+    inputStyle?: React.CSSProperties;
+    labelClassName?: string;
+    labelStyle?: React.CSSProperties;
+}
+```
+
+---
+
+### 3️⃣ Button Component
+A customizable button with different styles and click handlers.
+
+#### Props:
+```ts
+interface ButtonProps {
+    label: string | React.ReactNode;
+    onClick: () => void;
+    disabled?: boolean;
+    style?: React.CSSProperties;
+    className?: string;
+}
+```
+
+---
+
+### 4️⃣ Select Component
+A dropdown select component with styling options.
+
+#### Props:
+```ts
+interface Option {
+    value: string;
+    label: string;
 }
 
-export default App;
+interface SelectProps {
+    label?: string;
+    options: Option[];
+    value: string | null;
+    onChange: (value: string) => void;
+    placeholder?: string;
+    className?: string;
+    style?: React.CSSProperties;
+    buttonClassName?: string;
+    dropdownClassName?: string;
+    optionClassName?: string;
+    SelectButtonStyle?: React.CSSProperties;
+    dropdownStyle?: React.CSSProperties;
+    optionStyle?: React.CSSProperties;
+    labelClassName?: string;
+    labelStyle?: React.CSSProperties;
+}
 ```
 
 ---
 
-## 📚 Available Components
+### 5️⃣ Multi-Select Component
+A component for selecting multiple options from a dropdown list.
 
-- **Button** - A customizable button with different variants.
-- **TextInput** - A simple input field with styling.
-- **Select** - A dropdown component with multiple options.
-- **MultiSelect** - A multi-select dropdown.
-- **Toggle** - A switch toggle button.
-- **DateTimePicker** - A date and time picker.
+#### Props:
+```ts
+interface MultiSelectProps {
+    label?: string;
+    options: Option[];
+    selectedValues: string[];
+    onChange: (values: string[]) => void;
+    placeholder?: string;
+    className?: string;
+    style?: React.CSSProperties;
+    buttonClassName?: string;
+    dropdownClassName?: string;
+    optionClassName?: string;
+    MultiSelectButtonStyle?: React.CSSProperties;
+    dropdownStyle?: React.CSSProperties;
+    optionStyle?: React.CSSProperties;
+    labelClassName?: string;
+    labelStyle?: React.CSSProperties;
+}
+```
 
 ---
 
-## 🎨 Customization
+### 6️⃣ DateTime Component
+A date-time input field with custom styling support.
 
-You can customize components using props or by overriding styles via CSS or Tailwind.
+#### Props:
+```ts
+interface DateTimeProps {
+    label?: string;
+    value: string;
+    onChange: (value: string) => void;
+    className?: string;
+    style?: React.CSSProperties;
+    inputClassName?: string;
+    inputStyle?: React.CSSProperties;
+    labelClassName?: string;
+    labelStyle?: React.CSSProperties;
+}
+```
 
-Example:
+---
+
+### 7️⃣ Toggle Component
+A toggle switch for boolean values.
+
+#### Props:
+```ts
+interface ToggleProps {
+    label?: string;
+    checked: boolean;
+    onChange: (checked: boolean) => void;
+    className?: string;
+    style?: React.CSSProperties;
+    toggleClassName?: string;
+    toggleStyle?: React.CSSProperties;
+    labelClassName?: string;
+    labelStyle?: React.CSSProperties;
+}
+```
+
+---
+
+### 8️⃣ Filter Component
+A comprehensive filtering system that supports text input, select dropdowns, multi-select, and date-time range filters.
+
+#### Props:
+```ts
+interface FilterOption {
+    value: string;
+    label: string;
+}
+
+interface FilterField {
+    name: string;
+    label: string;
+    type: "text" | "select" | "multi-select" | "datetime-range";
+    options?: FilterOption[];
+    placeholder?: string;
+    defaultValue?: any;
+}
+
+interface FilterSchema extends FilterField {
+    className?: string;
+    buttonClassName?: string;
+    dropdownClassName?: string;
+    optionClassName?: string;
+    style?: React.CSSProperties;
+    buttonStyle?: React.CSSProperties;
+    dropdownStyle?: React.CSSProperties;
+    inputClassName?: string;
+    inputStyle?: React.CSSProperties;
+    toggleClassName?: string;
+    toggleStyle?: React.CSSProperties;
+    labelClassName?: string;
+    labelStyle?: React.CSSProperties;
+    required?: boolean;
+    error?: string;
+    minLength?: number;
+    maxLength?: number;
+    regex?: RegExp;
+}
+
+interface FilterComponentProps {
+    filterSchema: FilterSchema[];
+    filters: Record<string, any>;
+    setFilters: (filters: Record<string, any>) => void;
+    handleApply: () => void;
+    handleResetFilters: () => void;
+    showFilterCount?: boolean;
+}
+```
+
+---
+
+## Usage Example
 ```tsx
-<Button label="Primary" variant="primary" size="lg" />
+import { Alert, TextField, Button, Select, MultiSelect, DateTime, Toggle, FilterComponent } from "ui-widgets-kit";
+
+const App = () => {
+    return (
+        <TextField
+            name="username"
+            label="Username"
+            value=""
+            onChange={(val) => console.log(val)}
+        />
+    );
+};
 ```
 
 ---
 
-## 🛠️ Development & Contribution
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/ui-widgets-kit.git
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Start the development server:
-   ```sh
-   npm run dev
-   ```
-
-Contributions are welcome! Feel free to submit issues and pull requests.
+## License
+This project is licensed under the MIT License.
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
+## Contributing
+Feel free to submit issues or pull requests to enhance this package.
 
 ---
 
-## 📞 Contact
+## Contact
+For any questions or feedback, reach out to `theanjalisachan@gmail.com`.
 
-For issues or feature requests, open an issue on GitHub or reach out to `your-email@example.com`.
-```
-
-Save this as **`README.md`** in your package directory, then republish your package (`npm publish --access public`). 🚀
