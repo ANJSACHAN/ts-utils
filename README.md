@@ -4,13 +4,13 @@
 
 ## 🚀 Installation
 ```sh
-npm install your-package-name
+npm install ui-widgets-kit
 ```
 
 or
 
 ```sh
-yarn add your-package-name
+yarn add ui-widgets-kit
 ```
 
 ---
