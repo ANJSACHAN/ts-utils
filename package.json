@@ -1,6 +1,6 @@
 {
   "name": "ui-widgets-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "type": "module",
   "peerDependencies": {
@@ -20,9 +20,6 @@
     "build:win": "set NODE_ENV=production&& webpack && tsc --emitDeclarationOnly",
     "prepare": "npm run build"
   },
- 
-
-
   "author": "Anjali Sachan",
   "license": "ISC",
   "description": "",
@@ -34,9 +31,8 @@
     "esbuild-loader": "^4.2.2",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
-   
     "postcss-loader": "^8.1.1",
-   "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.1",
     "postcss": "^8.4.31",
     "typescript": "^5.7.3",
     "webpack": "^5.97.1",
@@ -45,7 +41,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.0-alpha.13",
-     "react": "^18.2.0",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
 }
