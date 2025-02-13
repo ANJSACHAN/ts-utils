@@ -1,7 +1,6 @@
 # UI Widgets Kit
 
-**UI Widgets Kit** is a collection of reusable, customizable React UI components designed for modern web applications.
-
+**UI Widgets Kit** is a collection of reusable, customizable React UI components designed for modern web applications. The components come with Tailwind CSS styling by default, allowing you to easily customize them using Tailwind or custom CSS.
 ## 🚀 Installation
 ```sh
 npm install ui-widgets-kit
