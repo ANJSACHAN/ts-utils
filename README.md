@@ -480,7 +480,7 @@ A comprehensive filtering system that supports text input, select dropdowns, mul
 ---
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the ISC License.
 
 ---
 
@@ -490,5 +490,12 @@ Feel free to submit issues or pull requests to enhance this package.
 ---
 
 ## Contact
-For any questions or feedback, reach out to `theanjalisachan@gmail.com`.
+
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github)](https://github.com/ANJSACHAN)
+
+For any questions or feedback, reach out to [theanjalisachan@gmail.com](mailto:theanjalisachan@gmail.com).
+
+
+          
+     
 
