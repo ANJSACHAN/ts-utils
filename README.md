@@ -16,115 +16,7 @@ yarn add ui-widgets-kit
 
 ## Usage Example
 
-### Example 1 :  Form Elements
-```tsx
-import React, { useState } from "react";
-import {
-  TextInput,
-  Button,
-  Select,
-  MultiSelect,
-  DateTimePicker,
-  Toggle,
-  Alert,
-} from "ui-widgets-kit";
-
-const Example = () => {
-  const [form, setForm] = useState({});
-  const [alert, setAlert] = useState(false);
-  const [alertMsg, setAlertMsg] = useState("");
-  const [alertColor, setAlertColor] = useState("green");
-
-  const options = [
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" },
-  ];
-
-  const multiSelectOptions = [
-    { value: "multi1", label: "Multi 1" },
-    { value: "multi2", label: "Multi 2" },
-  ];
-
-  const handleSubmit = () => {
-    console.log("Form data : ", form);
-    setAlert(true);
-    setAlertMsg("Form submitted successfully");
-    setAlertColor("green");
-  };
-
-  return (
-    <div
-      className="h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center p-6"
-    >
-      <div className="bg-white shadow-lg rounded-xl p-8 max-w-lg w-full">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Component Library Test
-        </h1>
-        <TextInput
-          name="text"
-          label="Text Input"
-          type="text"
-          value={form.text || ""}
-          onChange={(val) => setForm({ ...form, text: val })}
-          placeholder="Enter text"
-          style={{ marginBottom: "20px" }}
-        />
-        <Select
-          label="Single Select"
-          options={options}
-          value={form["single-select"] || ""}
-          onChange={(val) => setForm({ ...form, "single-select": val })}
-          placeholder="Choose a category"
-          style={{ marginBottom: "20px" }}
-        />
-        <MultiSelect
-          label="Multi Select"
-          options={multiSelectOptions}
-          selectedValues={form["multi-select"] || []}
-          onChange={(vals) => setForm({ ...form, "multi-select": vals })}
-          placeholder="Select multiple"
-          style={{ marginBottom: "20px" }}
-        />
-        <DateTimePicker
-          label="Select Date"
-          value={form.date || ""}
-          onChange={(val) => setForm({ ...form, date: val })}
-          style={{ marginBottom: "20px" }}
-        />
-        <Toggle
-          label="Toggle Option"
-          checked={form.toggle || false}
-          onChange={(val) => setForm({ ...form, toggle: val })}
-          style={{ marginBottom: "20px" }}
-        />
-        <div className="flex justify-center">
-          <Button
-            label="Submit"
-            onClick={() => handleSubmit()}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          />
-        </div>
-      </div>
-      <Alert
-        open={alert}
-        onClose={() => setAlert(false)}
-        message={alertMsg}
-        color={alertColor}
-        iconColor="red"
-      />
-    </div>
-  );
-};
-
-export default Example;
-```
-### Result 
-
-![image](https://github.com/user-attachments/assets/f33f8732-e73e-4e6b-90d5-512aa5b7e45b)
-
----
-
-### Example 2 : FilterComponent
+### Example 1 : FilterComponent and Alert Component
 
 ```tsx
 import React, { useState } from "react";
@@ -232,10 +124,120 @@ const Example = () => {
 
 export default Example;
 ```
-
 ### Result
 
 ![image](https://github.com/user-attachments/assets/e3ce8df5-c4f4-482f-bff2-a8cf75125575)
+
+![image](https://github.com/user-attachments/assets/608d2d89-419a-48ab-96b0-5a28fc607c15)
+
+---
+
+### Example 2 :  Form Elements
+
+```tsx
+import React, { useState } from "react";
+import {
+  TextInput,
+  Button,
+  Select,
+  MultiSelect,
+  DateTimePicker,
+  Toggle,
+  Alert,
+} from "ui-widgets-kit";
+
+const Example = () => {
+  const [form, setForm] = useState({});
+  const [alert, setAlert] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
+  const [alertColor, setAlertColor] = useState("green");
+
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+  ];
+
+  const multiSelectOptions = [
+    { value: "multi1", label: "Multi 1" },
+    { value: "multi2", label: "Multi 2" },
+  ];
+
+  const handleSubmit = () => {
+    console.log("Form data : ", form);
+    setAlert(true);
+    setAlertMsg("Form submitted successfully");
+    setAlertColor("green");
+  };
+
+  return (
+    <div
+      className="h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center p-6"
+    >
+      <div className="bg-white shadow-lg rounded-xl p-8 max-w-lg w-full">
+        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Component Library Test
+        </h1>
+        <TextInput
+          name="text"
+          label="Text Input"
+          type="text"
+          value={form.text || ""}
+          onChange={(val) => setForm({ ...form, text: val })}
+          placeholder="Enter text"
+          style={{ marginBottom: "20px" }}
+        />
+        <Select
+          label="Single Select"
+          options={options}
+          value={form["single-select"] || ""}
+          onChange={(val) => setForm({ ...form, "single-select": val })}
+          placeholder="Choose a category"
+          style={{ marginBottom: "20px" }}
+        />
+        <MultiSelect
+          label="Multi Select"
+          options={multiSelectOptions}
+          selectedValues={form["multi-select"] || []}
+          onChange={(vals) => setForm({ ...form, "multi-select": vals })}
+          placeholder="Select multiple"
+          style={{ marginBottom: "20px" }}
+        />
+        <DateTimePicker
+          label="Select Date"
+          value={form.date || ""}
+          onChange={(val) => setForm({ ...form, date: val })}
+          style={{ marginBottom: "20px" }}
+        />
+        <Toggle
+          label="Toggle Option"
+          checked={form.toggle || false}
+          onChange={(val) => setForm({ ...form, toggle: val })}
+          style={{ marginBottom: "20px" }}
+        />
+        <div className="flex justify-center">
+          <Button
+            label="Submit"
+            onClick={() => handleSubmit()}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          />
+        </div>
+      </div>
+      <Alert
+        open={alert}
+        onClose={() => setAlert(false)}
+        message={alertMsg}
+        color={alertColor}
+        iconColor="red"
+      />
+    </div>
+  );
+};
+
+export default Example;
+```
+### Result 
+
+![image](https://github.com/user-attachments/assets/f33f8732-e73e-4e6b-90d5-512aa5b7e45b)
 
 ---
 
@@ -267,9 +269,9 @@ A customizable text input field with validation options.
 | Prop             | Type                         | Description |
 |-----------------|-----------------------------|-------------|
 | `name`          | `string`                     | The name of the text input field (used for form handling). |
+| `value`         | `string`                     | The current value of the text input. |
 | `label`         | `string` _(optional)_        | The label text for the input field. |
 | `type`          | `string` _(optional)_        | The type of input (`"text"`, `"password"`, `"email"`, etc.). Defaults to `"text"`. |
-| `value`         | `string`                     | The current value of the text input. |
 | `required`      | `boolean` _(optional)_       | Whether the field is required. Defaults to `false`. |
 | `style`         | `React.CSSProperties` _(optional)_ | Custom inline styles for the wrapper element. |
 | `placeholder`   | `string` _(optional)_        | Placeholder text inside the input field. |
@@ -310,10 +312,10 @@ A dropdown select component with styling options.
 
 | Prop               | Type                             | Description |
 |--------------------|--------------------------------|-------------|
-| `label`           | `string` _(optional)_         | The label text for the select dropdown. |
-| `options`         | `Option[]`                    | An array of options to display in the dropdown. |
+| `options`         | `Option[]` consist of label `string` and value `string`   | An array of options to display in the dropdown. |
 | `value`           | `string \| null`              | The currently selected value. |
 | `onChange`        | `(value: string) => void`     | Function triggered when an option is selected. |
+| `label`           | `string` _(optional)_         | The label text for the select dropdown. |
 | `placeholder`     | `string` _(optional)_         | Placeholder text displayed when no option is selected. |
 | `className`       | `string` _(optional)_         | Additional classes for the select component wrapper. |
 | `style`           | `React.CSSProperties` _(optional)_ | Custom inline styles for the select component wrapper. |
@@ -326,6 +328,13 @@ A dropdown select component with styling options.
 | `labelClassName`  | `string` _(optional)_         | Additional classes for the label element. |
 | `labelStyle`      | `React.CSSProperties` _(optional)_ | Custom inline styles for the label element. |
 
+```ts
+const options = [
+  { value: "electronics", label: "Electronics & Gadgets" },
+  { value: "fashion", label: "Clothing & Fashion" },
+];
+```
+
 ---
 
 ### 5️⃣ Multi-Select Component
@@ -335,10 +344,10 @@ A component for selecting multiple options from a dropdown list.
 
 | Prop                  | Type                               | Description |
 |-----------------------|----------------------------------|-------------|
-| `label`              | `string` _(optional)_            | The label text for the multi-select dropdown. |
-| `options`            | `Option[]`                       | An array of options to display in the dropdown. |
+| `options`            | `Option[]` consist of label `string` and value `string` | An array of options to display in the dropdown. |
 | `selectedValues`     | `string[]`                       | An array of selected values. |
 | `onChange`          | `(values: string[]) => void`     | Function triggered when the selection changes. |
+| `label`              | `string` _(optional)_            | The label text for the multi-select dropdown. |
 | `placeholder`        | `string` _(optional)_            | Placeholder text displayed when no option is selected. |
 | `className`         | `string` _(optional)_            | Additional classes for the multi-select component wrapper. |
 | `style`             | `React.CSSProperties` _(optional)_ | Custom inline styles for the multi-select component wrapper. |
@@ -359,9 +368,9 @@ A date-time input field with custom styling support.
 
 | Prop             | Type                               | Description |
 |-----------------|----------------------------------|-------------|
-| `label`         | `string` _(optional)_            | The label text for the date/time input field. |
 | `value`         | `string`                         | The current value of the date/time input (ISO format or a formatted string). |
 | `onChange`      | `(value: string) => void`       | Function triggered when the date/time value changes. |
+| `label`         | `string` _(optional)_            | The label text for the date/time input field. |
 | `className`     | `string` _(optional)_            | Additional classes for the wrapper element. |
 | `style`         | `React.CSSProperties` _(optional)_ | Custom inline styles for the wrapper element. |
 | `inputClassName`| `string` _(optional)_            | Additional classes for the input field. |
@@ -379,9 +388,9 @@ A toggle switch for boolean values.
 
 | Prop             | Type                               | Description |
 |-----------------|----------------------------------|-------------|
-| `label`         | `string` _(optional)_            | The label text for the date/time input field. |
 | `value`         | `string`                         | The current value of the date/time input (ISO format or a formatted string). |
 | `onChange`      | `(value: string) => void`       | Function triggered when the date/time value changes. |
+| `label`         | `string` _(optional)_            | The label text for the date/time input field. |
 | `className`     | `string` _(optional)_            | Additional classes for the wrapper element. |
 | `style`         | `React.CSSProperties` _(optional)_ | Custom inline styles for the wrapper element. |
 | `inputClassName`| `string` _(optional)_            | Additional classes for the input field. |
